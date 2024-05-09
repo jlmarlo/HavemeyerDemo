@@ -20,8 +20,9 @@ chromosomes.append('chrX')
 #And final annotation table
 rule all:
 	input: 
-		'outputs/final/SmallerSampleAnnotation.vcf.gz',
-		'outputs/final/AnnotationTable.tsv'
+		'outputs/final/SmallSampleAnnotation.vcf.gz',
+		'outputs/final/AnnotationTable.tsv',
+		'outputs/final/FinalReport.txt'
 
 
 
@@ -31,8 +32,8 @@ rule all:
 
 rule split:
 	input:
-		vcf = 'datafiles/SmallerSample.vcf.gz',
-		tbi = 'datafiles/SmallerSample.vcf.gz.tbi'
+		vcf = 'datafiles/SmallSample.vcf.gz',
+		tbi = 'datafiles/SmallSample.vcf.gz.tbi'
 	output:
 		smallVCF= 'outputs/splitVCFs/{chrom}/{chrom}_noAnno.vcf.gz',
 		smalltbi= 'outputs/splitVCFs/{chrom}/{chrom}_noAnno.vcf.gz.tbi'
@@ -260,8 +261,8 @@ rule combine:
 	input: 
 		gather_vcfs
 	output:
-		finalvcf = 'outputs/final/SmallerSampleAnnotation.vcf.gz',
-		tbi = 'outputs/final/SmallerSampleAnnotation.vcf.gz.tbi'
+		finalvcf = 'outputs/final/SmallSampleAnnotation.vcf.gz',
+		tbi = 'outputs/final/SmallSampleAnnotation.vcf.gz.tbi'
 	params:
 		vcfs = lambda wildcards, input: " --input ".join(map(str,input))
 	threads: 12
@@ -283,8 +284,8 @@ rule combine:
 ##create the annotation table that will serve as basis of performance comparisons
 rule prep_table:
 	input:
-		vcf = 'outputs/final/SmallerSampleAnnotation.vcf.gz',
-		tib = 'outputs/final/SmallerSampleAnnotation.vcf.gz.tbi'
+		vcf = 'outputs/final/SmallSampleAnnotation.vcf.gz',
+		tib = 'outputs/final/SmallSampleAnnotation.vcf.gz.tbi'
 	output:
 		table = 'outputs/final/AnnotationTable.tsv'
 	resources:
