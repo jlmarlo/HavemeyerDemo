@@ -6,6 +6,31 @@ This repository contains a demonstration of how a variant processing pipeline ca
 
 ## Set Up
 *Conda environment*
+First thing we need as a conda environment that holds a few necessary programs that will run portions of the pipeline. 
+1st you'll have to download mamba if you don't already use conda/mamba
+
+download Mambaforge installer (assuming Unix-like platform)
+wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
+bash Mambaforge-$(uname)-$(uname -m).sh
+
+create a Snakemake environment which includes all Snakemake dependencies in
+addition to miscellaneous modules
+For older versions of mamba/conda:
+mamba create \
+    -c conda-forge -c bioconda \
+    -n snakemake \ # name of the environment
+    python=3.10 snakemake=7.19 pyaml xlsxwriter snpeff=5.2 bcftools=1.17
+
+For newer versions of mamba/conda:
+
+```
+mamba create \
+  -c conda-forge -c bioconda \
+  -n snakemake \
+  python=3.10 snakemake=7.19 pyaml xlsxwriter snpeff=5.2 bcftools=1.17 gatk4=4.2.6.1
+```
+Creating environments can take considerable time depending on the speed of internet connection and HPC speed.
+
 [hold] need to look up exactly what is necessary
 *Downloading Data*
 [hold] fastq file + gvcfs of other horses + minivcf
