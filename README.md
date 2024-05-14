@@ -10,9 +10,10 @@ First thing we need as a conda environment that holds a few necessary programs t
 1st you'll have to download mamba if you don't already use conda/mamba
 
 download Mambaforge installer (assuming Unix-like platform)
+```
 wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
 bash Mambaforge-$(uname)-$(uname -m).sh
-
+```
 create a Snakemake environment which includes all Snakemake dependencies in
 addition to miscellaneous modules
 For older versions of mamba/conda
