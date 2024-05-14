@@ -15,12 +15,13 @@ bash Mambaforge-$(uname)-$(uname -m).sh
 
 create a Snakemake environment which includes all Snakemake dependencies in
 addition to miscellaneous modules
-For older versions of mamba/conda:
+For older versions of mamba/conda
+```
 mamba create \
     -c conda-forge -c bioconda \
     -n snakemake \
     python=3.10 snakemake=7.19 pyaml xlsxwriter snpeff=5.2 bcftools=1.17
-
+```
 Creating environments can take considerable time depending on the speed of internet connection and HPC speed.
 
 *Downloading Data*
